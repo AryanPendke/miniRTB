@@ -5,6 +5,8 @@ import com.aryan.MiniRTB.dto.AdvertiserResponse;
 import com.aryan.MiniRTB.dto.CreateAdvertiserRequest;
 import com.aryan.MiniRTB.entity.Advertiser;
 import com.aryan.MiniRTB.entity.AdvertiserStatus;
+import com.aryan.MiniRTB.exception.AdvertiserAlreadyExistsException;
+import com.aryan.MiniRTB.mapper.AdvertiserMapper;
 import com.aryan.MiniRTB.repository.AdvertiserRepository;
 import com.aryan.MiniRTB.service.AdvertiserService;
 
@@ -12,21 +14,25 @@ import com.aryan.MiniRTB.service.AdvertiserService;
 public class AdvertiserServiceImpl implements AdvertiserService {
 
     private final AdvertiserRepository advertiserRepository; 
+    private final AdvertiserMapper advertiserMapper;
     
-    public AdvertiserServiceImpl(AdvertiserRepository advertiserRepository){
+    public AdvertiserServiceImpl(AdvertiserRepository advertiserRepository, AdvertiserMapper advertiserMapper){
         this.advertiserRepository = advertiserRepository;
+        this.advertiserMapper = advertiserMapper;
     }
 
     @Override
     public AdvertiserResponse createAdvertiser(CreateAdvertiserRequest request){
 
-        Advertiser advertiser = new Advertiser();
-        advertiser.setName(request.name());
-        advertiser.setStatus(AdvertiserStatus.ACTIVE);
+        if(advertiserRepository.existsByName(request.name())){
+            throw new AdvertiserAlreadyExistsException(request.name());
+        }
 
+        Advertiser advertiser = advertiserMapper.toEntity(request);
+        advertiser.setStatus(AdvertiserStatus.ACTIVE);
         Advertiser saved = advertiserRepository.save(advertiser);
 
-        return new AdvertiserResponse(saved.getId(),saved.getName(),saved.getStatus().name());
+        return advertiserMapper.toResponse(saved);
 
     }
 }
