@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aryan.MiniRTB.dto.AdvertiserResponse;
-import com.aryan.MiniRTB.dto.CreateAdvertiserRequest;
+import com.aryan.MiniRTB.dto.advertiser.AdvertiserResponse;
+import com.aryan.MiniRTB.dto.advertiser.CreateAdvertiserRequest;
 import com.aryan.MiniRTB.service.AdvertiserService;
 
 import jakarta.validation.Valid;

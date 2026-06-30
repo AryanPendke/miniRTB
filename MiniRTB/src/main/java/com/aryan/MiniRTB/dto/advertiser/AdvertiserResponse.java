@@ -1,4 +1,4 @@
-package com.aryan.MiniRTB.dto;
+package com.aryan.MiniRTB.dto.advertiser;
 
 public record AdvertiserResponse (
     Long id,

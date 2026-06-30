@@ -1,8 +1,8 @@
 package com.aryan.MiniRTB.service.impl;
 import org.springframework.stereotype.Service;
 
-import com.aryan.MiniRTB.dto.AdvertiserResponse;
-import com.aryan.MiniRTB.dto.CreateAdvertiserRequest;
+import com.aryan.MiniRTB.dto.advertiser.AdvertiserResponse;
+import com.aryan.MiniRTB.dto.advertiser.CreateAdvertiserRequest;
 import com.aryan.MiniRTB.entity.Advertiser;
 import com.aryan.MiniRTB.entity.AdvertiserStatus;
 import com.aryan.MiniRTB.exception.AdvertiserAlreadyExistsException;

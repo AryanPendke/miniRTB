@@ -1,4 +1,4 @@
-package com.aryan.MiniRTB.dto;
+package com.aryan.MiniRTB.dto.common;
 
 import java.time.LocalDateTime;
 
