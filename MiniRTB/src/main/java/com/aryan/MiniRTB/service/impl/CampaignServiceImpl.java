@@ -12,6 +12,8 @@ import com.aryan.MiniRTB.repository.AdvertiserRepository;
 import com.aryan.MiniRTB.repository.CampaignRepository;
 import com.aryan.MiniRTB.service.CampaignService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class CampaignServiceImpl implements CampaignService{
     
@@ -25,6 +27,7 @@ public class CampaignServiceImpl implements CampaignService{
         this.advertiserRepository = advertiserRepository;
     } 
 
+    @Transactional
     @Override
     public CampaignResponse createCampaign(CreateCampaignRequest request){
         

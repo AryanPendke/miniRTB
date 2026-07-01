@@ -10,6 +10,8 @@ import com.aryan.MiniRTB.mapper.AdvertiserMapper;
 import com.aryan.MiniRTB.repository.AdvertiserRepository;
 import com.aryan.MiniRTB.service.AdvertiserService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class AdvertiserServiceImpl implements AdvertiserService {
 
@@ -21,6 +23,7 @@ public class AdvertiserServiceImpl implements AdvertiserService {
         this.advertiserMapper = advertiserMapper;
     }
 
+    @Transactional
     @Override
     public AdvertiserResponse createAdvertiser(CreateAdvertiserRequest request){
 
