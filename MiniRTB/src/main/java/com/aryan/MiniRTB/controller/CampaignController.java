@@ -24,6 +24,6 @@ public class CampaignController {
     public CampaignResponse createCampaign(
             @Valid @RequestBody CreateCampaignRequest request) {
 
-        return campaignService.createCampaign(request);
+        return campaignService.createCampaign(request); 
     }
 }
