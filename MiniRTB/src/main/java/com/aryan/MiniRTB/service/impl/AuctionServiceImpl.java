@@ -1,9 +1,10 @@
 package com.aryan.MiniRTB.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import com.aryan.MiniRTB.entity.AdRequest;
 import com.aryan.MiniRTB.entity.Campaign;
 import com.aryan.MiniRTB.entity.CampaignStatus;
@@ -19,6 +20,7 @@ public class AuctionServiceImpl implements AuctionService{
         this.campaignRepository = campaignRepository;
     }
 
+    @Transactional
     @Override
     public Campaign findWinningCampaign(AdRequest adRequest){
 
@@ -38,6 +40,22 @@ public class AuctionServiceImpl implements AuctionService{
             }
         }
 
+        BigDecimal remaining =
+                winner.getRemainingBudget()
+                    .subtract(winner.getBidAmount());
+
+        if (remaining.compareTo(BigDecimal.ZERO) <= 0) {
+
+            winner.setRemainingBudget(BigDecimal.ZERO);
+            winner.setStatus(CampaignStatus.PAUSED);
+            
+        } else {
+
+            winner.setRemainingBudget(remaining);
+
+        }        
+
+        campaignRepository.save(winner);
         return winner;
     }
 }
