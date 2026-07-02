@@ -1,8 +1,8 @@
 package com.aryan.MiniRTB.service;
 
-import com.aryan.MiniRTB.dto.AdRequest.AdRequestResponse;
-import com.aryan.MiniRTB.dto.AdRequest.CreateAdRequestRequest;
+import com.aryan.MiniRTB.dto.adRequest.CreateAdRequestRequest;
+import com.aryan.MiniRTB.dto.auction.AuctionResponse;
 
 public interface AdRequestService{
-    AdRequestResponse createAdRequest(CreateAdRequestRequest request);
+    AuctionResponse createAdRequest(CreateAdRequestRequest request);
 }

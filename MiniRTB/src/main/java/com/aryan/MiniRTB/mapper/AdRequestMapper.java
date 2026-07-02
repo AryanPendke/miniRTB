@@ -2,8 +2,8 @@ package com.aryan.MiniRTB.mapper;
 
 import org.springframework.stereotype.Component;
 
-import com.aryan.MiniRTB.dto.AdRequest.AdRequestResponse;
-import com.aryan.MiniRTB.dto.AdRequest.CreateAdRequestRequest;
+import com.aryan.MiniRTB.dto.adRequest.AdRequestResponse;
+import com.aryan.MiniRTB.dto.adRequest.CreateAdRequestRequest;
 import com.aryan.MiniRTB.entity.AdRequest;
 
 @Component

@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.aryan.MiniRTB.dto.AdRequest.AdRequestResponse;
-import com.aryan.MiniRTB.dto.AdRequest.CreateAdRequestRequest;
+import com.aryan.MiniRTB.dto.adRequest.CreateAdRequestRequest;
+import com.aryan.MiniRTB.dto.auction.AuctionResponse;
 import com.aryan.MiniRTB.service.AdRequestService;
 
 import jakarta.validation.Valid;
@@ -22,7 +22,7 @@ public class AdRequestController {
     }
 
     @PostMapping
-    public AdRequestResponse createAdRequest(
+    public AuctionResponse createAdRequest(
         @Valid
         @RequestBody CreateAdRequestRequest request){
         return adRequestService.createAdRequest(request);

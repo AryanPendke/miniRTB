@@ -1,4 +1,4 @@
-package com.aryan.MiniRTB.dto.AdRequest;
+package com.aryan.MiniRTB.dto.adRequest;
 
 import com.aryan.MiniRTB.entity.CampaignCategory;
 import com.aryan.MiniRTB.entity.Country;

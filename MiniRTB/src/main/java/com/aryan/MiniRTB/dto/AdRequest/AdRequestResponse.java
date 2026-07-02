@@ -1,4 +1,4 @@
-package com.aryan.MiniRTB.dto.AdRequest;
+package com.aryan.MiniRTB.dto.adRequest;
 
 import java.time.LocalDateTime;
 

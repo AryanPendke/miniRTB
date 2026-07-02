@@ -39,7 +39,7 @@ public class CampaignServiceImpl implements CampaignService{
 
         campaign.setRemainingBudget(campaign.getDailyBudget());
 
-        campaign.setStatus(CampaignStatus.DRAFT);
+        campaign.setStatus(CampaignStatus.ACTIVE);
 
         Campaign saved = campaignRepository.save(campaign);
 
