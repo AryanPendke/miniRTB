@@ -12,6 +12,7 @@ import com.aryan.MiniRTB.repository.AdRequestRepository;
 import com.aryan.MiniRTB.repository.PublisherRepository;
 import com.aryan.MiniRTB.service.AdRequestService;
 import com.aryan.MiniRTB.service.AuctionService;
+import com.aryan.MiniRTB.service.ImpressionService;
 
 import jakarta.transaction.Transactional;
 import com.aryan.MiniRTB.entity.Publisher;
@@ -19,12 +20,14 @@ import com.aryan.MiniRTB.entity.Publisher;
 @Service
 public class AdRequestServiceImpl implements AdRequestService{
 
+    private final ImpressionService impressionService;
     private final AdRequestRepository adRequestRepository;
     private final AdRequestMapper adRequestMapper;
     private final PublisherRepository publisherRepository;
     private final AuctionService auctionService;
 
-    public AdRequestServiceImpl(AdRequestRepository adRequestRepository, AdRequestMapper adRequestMapper, PublisherRepository publisherRepository, AuctionService auctionService){
+    public AdRequestServiceImpl(ImpressionService impressionService, AdRequestRepository adRequestRepository, AdRequestMapper adRequestMapper, PublisherRepository publisherRepository, AuctionService auctionService){
+        this.impressionService = impressionService;
         this.adRequestMapper = adRequestMapper;
         this.adRequestRepository = adRequestRepository;
         this.publisherRepository = publisherRepository;
@@ -46,6 +49,8 @@ public class AdRequestServiceImpl implements AdRequestService{
         Campaign winner = auctionService.findWinningCampaign(saved);
         //AdRequestResponse response = adRequestMapper.toResponse(saved);
         //return response;
+
+        impressionService.recordImpression(winner, saved);
 
         return new AuctionResponse(
             winner.getId(),
